@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="in.rockerz.servicesapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="in.rockerz.servicesapp.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="in.rockerz.servicesapp.PDFActivity"
+            android:label="@string/title_activity_pdf" >
+        </activity>
+        <activity
+            android:name="in.rockerz.servicesapp.ImagesActivity"
+            android:label="@string/title_activity_images" >
+        </activity>
+        <activity
+            android:name="in.rockerz.servicesapp.TextActivity"
+            android:label="@string/title_activity_text" >
+        </activity>
+        <service 
+            android:name="in.rockerz.servicesapp.MyService"></service>
+        <receiver android:name="in.rockerz.servicesapp.MyBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.FILE_DOWNLOADED_ACTION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
