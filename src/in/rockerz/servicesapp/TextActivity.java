@@ -6,15 +6,14 @@ import in.rockerz.servicesapp.MyService.MyBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 public class TextActivity extends Activity {
 
@@ -22,7 +21,7 @@ public class TextActivity extends Activity {
 	MyService ms;
 	boolean b =false;
 	Intent intent;
-private BroadcastReceiver receiver = new BroadcastReceiver(){
+/*private BroadcastReceiver receiver = new BroadcastReceiver(){
 		
 		@Override
 	    public void onReceive(Context context, Intent intent) {
@@ -40,7 +39,7 @@ private BroadcastReceiver receiver = new BroadcastReceiver(){
 	        }
 	      }
 	    }
-	  };
+	  };*/
 		
 	  private ServiceConnection mConnection = new ServiceConnection() {
 
@@ -72,6 +71,7 @@ private BroadcastReceiver receiver = new BroadcastReceiver(){
 		return true;
 	}
 	
+	@SuppressLint("InlinedApi")
 	@Override
 	protected void onStart()
 	{

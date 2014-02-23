@@ -13,7 +13,8 @@ import android.widget.Toast;
 public class MyService extends Service {
 	  private final IBinder mBinder = new MyBinder();
 	  public static final String RESULT = "result";
-	  public static final String NOTIFICATION = "com.example.servicesapp";
+	  public static final String NOTIFICATION = "in.rockerz.servicesapp";
+	  public static  String className;
 
 	    	
 	@Override

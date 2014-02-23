@@ -11,6 +11,7 @@ import java.net.URLConnection;
 
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 
 public class BackgroundDownload extends AsyncTask<URL, Integer, Long> {
 
@@ -18,7 +19,8 @@ public class BackgroundDownload extends AsyncTask<URL, Integer, Long> {
     public static final String FILENAME = "filename";
     public static final String FILEPATH = "filepath";
     public static final String RESULT = "result";
-    public static final String NOTIFICATION = "com.example.servicesapp";
+    public static final String NOTIFICATION = "in.rockerz.servicesapp";
+    MyService ms=new MyService();
 
 	@Override
 	protected Long doInBackground(URL... urls) {
@@ -27,23 +29,26 @@ public class BackgroundDownload extends AsyncTask<URL, Integer, Long> {
       	  URL[] urlPath = urls;
       	  for(int i=0;i<urlPath.length;i++)
       	  {
-      	  System.out.println(urlPath[i]);
-            URL url = urlPath[i];
-            //String fileName = intent.getStringExtra(FILENAME);
-            String fileName=url.toString().substring(url.toString().lastIndexOf("/"));
+      	  Log.d("URL",urlPath[i].toString());
+      	    URL url = urlPath[i];
+            String fileName=url.toString().substring(url.toString().lastIndexOf("/")+1);
+            String activity=url.toString().substring(url.toString().lastIndexOf(".")+1);
+            if(activity.equalsIgnoreCase("pdf")){
+            	Log.d("Activity","PDFActivity");            	
+			            }
+            else if(activity.equalsIgnoreCase("jpg")){
+            	Log.d("Activity","ImageActivity");
+			            }
+            else if(activity.equalsIgnoreCase("doc")){
+            	Log.d("Activity","Text Activity");
+			}
             
-            file = new File(Environment.getExternalStorageDirectory(),
-          	        fileName);
-           // System.out.println(file.getAbsolutePath());
+            file = new File(Environment.getExternalStorageDirectory(),fileName);
+           Log.d("fileName", fileName);
             URLConnection connection = url.openConnection();
             connection.connect();
-
-            // this will be useful so that you can show a typical 0-100% progress bar
             
             int fileLength = connection.getContentLength();
-            //System.out.println("File Length"+fileLength);
-            // download the file
-            //System.out.println(connection.getURL());
             InputStream input = new BufferedInputStream(url.openStream());
             OutputStream output = new FileOutputStream(file.getAbsolutePath());
            byte data[] = new byte[1024];

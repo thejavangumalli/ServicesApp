@@ -9,14 +9,12 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 public class PDFActivity extends Activity {
 	URL url;
@@ -115,6 +113,7 @@ public class PDFActivity extends Activity {
 			intent.putExtra("URLs",urls);
 			intent.putExtra("length", 0);
 			startService(intent);
+			//bindService(intent, mConnection,Context.BIND_AUTO_CREATE);
 
 			}
 				

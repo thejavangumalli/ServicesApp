@@ -6,6 +6,7 @@ import in.rockerz.servicesapp.MyService.MyBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -52,6 +53,7 @@ public class ImagesActivity extends Activity {
 		return true;
 	}
 	
+	@SuppressLint("InlinedApi")
 	@Override
 	protected void onStart()
 	{
